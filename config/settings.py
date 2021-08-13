@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -132,6 +133,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 
+STATIC_ROOT = BASE_DIR/'staticfiles'
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
@@ -150,3 +153,6 @@ LEAFLET_CONFIG = {
     'DEFAULT_PRECISION': 11,
     'ATTRIBUTION_PREFIX': 'Getir WebGIS Project by Leaflet',
 }
+
+
+django_heroku.settings(locals())
